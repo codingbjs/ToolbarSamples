@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ToolbarTestActivity"
+    android:fitsSystemWindows="true">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:fitsSystemWindows="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--
+       layout_scrollFlags : AppBarLayout 및 하위의 스크롤 동작 담당
+       scroll :  내용과 같이 스크롤, 툴바를 다시 볼려면 스크롤을 위로 끝까지 올려야함
+       enterAlways : 맨위에 없어도 위로 스크롤시 바로 툴바가 보임
+       enterAlwaysCollapsed : enterAlways와 동작이 비슷하지만 스크롤을 위로 끝까지 올려야 전체뷰가 보임 (스크롤하면 툴바도 같이 스크롤되어 안보임)
+       exitUntilCollapsed : 아래/위로 스크롤시 축소된 툴바가 보이고 스크롤을 위로 끝까지 올려야 전체뷰가 보임 (스크롤해도 축소된 툴바가 보임)
+       snap : 툴바가 위쪽에서 얼마나 떨어져 있는지에 따라 숨겨지거나 보여짐
+       -->
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            app:layout_scrollFlags="scroll|enterAlwaysCollapsed"
+            app:title="@string/app_name"
+            app:contentInsetStartWithNavigation="0dp">
+
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- layout_behavior : 자식뷰의 변화 상태를 부모뷰/다른 자식뷰한테 전달 (여기서는 스크롤했을 경우 다른 자식뷰에게 전달한다) -->
+    <androidx.core.widget.NestedScrollView
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <WebView
+                android:id="@+id/webView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+
+
+
